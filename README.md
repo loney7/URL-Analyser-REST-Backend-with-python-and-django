@@ -1,16 +1,22 @@
 <pre><b>Hi ! Welcome to the Url analyser application</b></pre>
 
-<b> Index< /b>
-  <ul>1. Problem Statement</ul>
-  <ul>2. Steps towards building the solution</ul>
-  <ul>3. Assumptions/ Decisions
-  <ul>4. Problems/Challenges Faced</ul>
-  <ul>5. Requirements/ Machine Setup</ul>
+<b> Index </b>
+
+  <ul>
   
-
-
-
-
+  <li>1. Problem Statement</li>
+  
+  <li>2. Steps towards building the solution</li>
+  
+  <li>3. Assumptions/ Decisions</li>
+  
+  <li>4. Problems/Challenges Faced</li>
+  
+  <li>5. Requirements/ Machine Setup</li>
+  
+  
+  
+  
 
 ![Screenshot](Screen%20Shot%202018-10-11%20at%2012.46.25%20AM.png)
 ![alt text](https://github.com/loney7/demo/blob/master/Screen%20Shot%202018-10-11%20at%2012.51.57%20AM.png)
