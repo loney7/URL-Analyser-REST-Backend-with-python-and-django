@@ -7,6 +7,8 @@ from .models import Webpage
 import ssl
 from urllib.parse import urlparse
 
+# Function to determine HTML version of the page
+
 
 def get_html_version(content):
     if content == "html" or content == "HTML" or content == "Doctype HTML" or content == "doctype html" or content == "DOCTYPE HTML" or content == "DOCTYPE html":
@@ -29,7 +31,7 @@ def get_html_version(content):
     else:
         return "Version Could not be Detected"
 
-
+#
 def get_heading_info(soup):
     heading = {}
 
