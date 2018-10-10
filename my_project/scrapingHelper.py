@@ -1,42 +1,34 @@
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404, redirect
-from django.http import JsonResponse
-import sys
-import argparse
-import json
-import pprint
-import re
-import datetime
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-import requests
 from bs4 import BeautifulSoup, Doctype
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
-from .forms import Form
-from rest_framework import viewsets
 from .models import Webpage
 import ssl
 from urllib.parse import urlparse
 
+
 def get_html_version(content):
     if content == "html" or content == "HTML" or content == "Doctype HTML" or content == "doctype html" or content == "DOCTYPE HTML" or content == "DOCTYPE html":
         return "HTML-5.0"
-    elif content.find("html4")!=-1 or content.find("HTML4")!= -1 or content.find("HTML 4.01")!=-1 or content.find("html 4.01"):
+    elif content.find("html4") != -1 or content.find("HTML4")!= -1 or content.find("HTML 4.01")!=-1 or \
+            content.find("html 4.01"):
         return "HTML-4.01"
-    elif content.find("html3")!=-1 or content.find("HTML3")!= -1 or content.find("HTML 3.2")!=-1 or content.find("html 3.2"):
+    elif content.find("html3") != -1 or content.find("HTML3")!= -1 or content.find("HTML 3.2")!=-1 or \
+            content.find("html 3.2"):
         return "HTML-3.2"
-    elif content.find("html2")!=-1 or content.find("HTML2")!= -1 or content.find("HTML 2.0")!=-1 or content.find("html 2.0"):
+    elif content.find("html2") != -1 or content.find("HTML2")!= -1 or content.find("HTML 2.0")!=-1 or \
+            content.find("html 2.0"):
         return "HTML-2.0"
-    elif content.find("xhtml")!=-1 or content.find("XHTML")!= -1:
+    elif content.find("xhtml") != -1 or content.find("XHTML")!= -1:
         return "XTHML"
-    elif content.find("lxml")!=-1 or content.find("LXML")!=-1:
+    elif content.find("lxml") != -1 or content.find("LXML")!=-1:
         return "LXML"
-    elif content.find("lhtml")!=-1 or content.find("LHTML")!=-1:
+    elif content.find("lhtml") != -1 or content.find("LHTML")!=-1:
         return "LHTML"
     else:
         return "Version Could not be Detected"
+
 
 def get_heading_info(soup):
     heading = {}
@@ -129,7 +121,7 @@ def getInfo(url):
         html_version = get_html_version(soup.contents[0])
 
         #page title
-        page_title = soup.title.string
+        page_title = soup.title.text
 
         # status code 
         status_code = response.getcode()
