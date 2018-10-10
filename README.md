@@ -1,15 +1,18 @@
 Hi ! Welcome to the Url analyser application
 
 
+
+
+
 To run the web application, your system must fulfill the following requirements:
 
-Django==2.1.2
+Django - 2.1.2
 
 
-urllib3==1.23
+urllib3 - 1.23
 
 
-beautifulsoup4==4.6.3
+beautifulsoup4 - 4.6.3
 
 
 Python 3
@@ -43,6 +46,13 @@ Activate the virtualenv:
 Deactivate the virtualenv:
 
 <pre>$ deactivate</pre>
+
+
+After you’ve created and activated a virtual environment, enter the command 
+
+<pre>pip install Django</pre>
+
+at the shell prompt/ terminal.
 
 
 
