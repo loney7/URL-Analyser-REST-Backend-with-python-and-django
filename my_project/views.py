@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect
 from django.http import JsonResponse
 import sys
 import argparse
-
 import json
 import pprint
 import re
@@ -13,8 +13,15 @@ from django.core.exceptions import ValidationError
 import requests
 from bs4 import BeautifulSoup, Doctype
 from urllib.request import urlopen
+from urllib.error import HTTPError, URLError
+from .forms import Form
+from rest_framework import viewsets
+from .models import Webpage
+import ssl
+from urllib.parse import urlparse
+from . import scrapingHelper
+from django.core.cache import cache
 
-from .forms import NameForm
 
 def home(request):
     return HttpResponse('Home page !')
@@ -23,102 +30,52 @@ def index(request):
     return render(request, 'form.html')
 
 def analyse(request):
-    url = request.POST["textfield"]
-    print(url)
+    if request.method == "POST":
+        address = request.POST.get('address')
+        form = Form(request.POST)
+        if form.is_valid():
+            if cache.get(address) is not None:
+                resultString = cache.get(address)
+                print('cache found')
+            else:
+                resultObjInitial = scrapingHelper.getInfo(address)
+                resultString = str(resultObjInitial)
+                cache.set(address, resultString, 60)
+                
+            resultObj = Webpage()
+            resultStringAttr = resultString.split("~")
+            print(resultStringAttr)
+            resultObj.address = resultStringAttr[0]
+            resultObj.errorType = int(resultStringAttr[1])
+            resultObj.h1Count = int(resultStringAttr[2])
+            resultObj.h2Count = int(resultStringAttr[3])
+            resultObj.h3Count = int(resultStringAttr[4])
+            resultObj.h4Count = int(resultStringAttr[5])
+            resultObj.h5Count = int(resultStringAttr[6])
+            resultObj.h6Count = int(resultStringAttr[7])
+            resultObj.version = resultStringAttr[8]
+            resultObj.internalLinkCount = int(resultStringAttr[9])
+            resultObj.externalLinkCount = int(resultStringAttr[10])
+            resultObj.inaccessibleLinkCount = int(resultStringAttr[11])
+            resultObj.statusCode = int(resultStringAttr[12])
+            resultObj.timeStamp = resultStringAttr[13]
+            resultObj.loginForm = bool(resultStringAttr[14])
+            resultObj.errorMessage = resultStringAttr[15]
 
-    res = getInfo(url)
-
-    dump = json.dumps(res)
-    return HttpResponse(dump, content_type='application/json')
-    #return HttpResponse('Home page !')
-
-
-def get_html_version(content):
-    if content == "html" or content == "HTML" or content == "Doctype HTML" or content == "doctype html" or content == "DOCTYPE HTML" or content == "DOCTYPE html":
-        return "HTML 5.0"
-    elif content.find("html4")!=-1 or content.find("HTML4")!= -1 or content.find("HTML 4.01")!=-1 or content.find("html 4.01"):
-        return "HTML 4.01"
-    elif content.find("html3")!=-1 or content.find("HTML3")!= -1 or content.find("HTML 3.2")!=-1 or content.find("html 3.2"):
-        return "HTML 3.2"
-    elif content.find("html2")!=-1 or content.find("HTML2")!= -1 or content.find("HTML 2.0")!=-1 or content.find("html 2.0"):
-        return "HTML 2.0"
-    elif content.find("xhtml")!=-1 or content.find("XHTML")!= -1:
-        return "XTHML"
-    elif content.find("lxml")!=-1 or content.find("LXML")!=-1:
-        return "LXML"
-    elif content.find("lhtml")!=-1 or content.find("LHTML")!=-1:
-        return "LHTML"
+            context = {
+                "webpage":resultObj
+            }
+            if resultObj.errorType == 0:
+                return render(request, 'result.html', context)
+            elif resultObj.errorType == 1:
+                return render(request, 'resultHTTPError.html', context)
+            elif resultObj.errorType == 2:
+                return render(request, 'resultURLError.html', context)
+            else:
+                return render(request, 'resultInvalidURL.html', context)
     else:
-        return "Version Could not be Detected"
-
-def get_heading_info(soup):
-    heading = {}
-
-    h1 = soup.findAll("h1")
-    h2 = soup.findAll("h2")
-    h3 = soup.findAll("h3")
-    h4 = soup.findAll("h4")
-    h5 = soup.findAll("h5")
-    h6 = soup.findAll("h6")
-
-    heading['h1'] = str(len(h1))
-    heading['h2'] = str(len(h2))
-    heading['h3'] = str(len(h3))
-    heading['h4'] = str(len(h4))
-    heading['h5'] = str(len(h5))
-    heading['h6'] = str(len(h6))
-
-    return heading
-
-def get_forms_info(soup):
-    forms = soup.findAll("input")
-    count = 0
-    for items in forms:
-        if items['type']:
-            if items['type'] == "password":
-                count = count + 1
-
-    if count > 0:
-        return True
-    else:
-        return False
-
-def getInfo(url):
-
-    try:
-        #validate = URLValidator()
-        #validate(url)
-        response = urlopen(url)
-        soup = BeautifulSoup(response, "html.parser")
-        print(response)
-        links = soup.findAll("((http|ftp)s?://.*?)", response)
-        print(links)
-
-        #html version of the page
-        html_version = get_html_version(soup.contents[0])
-
-        #page title
-        page_title = soup.title.string
-
-        # status code : working link
-        status_code = 200
-
-        # time_stamp
-        time_stamp = str(datetime.datetime.now())
-
-        headings = get_heading_info(soup)
-
-        #login_forms = get_forms_info(soup)
-        result = {}
-        result['status_code'] = status_code
-        result['html_version'] = html_version
-        result['page_title'] = page_title
-        result['time_stamp'] = time_stamp
-        result['headings'] = headings
-        #result['login_forms'] = login_forms
-        return result
-
-        #return HttpResponse(dump, content_type='application/json')
-
-    except ValidationError:
-        print("This link does not work!! Check your link and try again")
+        form = Form()
+    context = {
+        "form":form
+    }
+    return render(request, "form.html", context)
