@@ -1,12 +1,6 @@
-Hi ! Welcome to the Url analyser application
-
-[alt text](https://github.com/loney7/demo/blob/master/Screen%20Shot%202018-10-11%20at%2012.46.25%20AM.png)
-
-
-
-
-
-[alt text](https://github.com/loney7/demo/blob/master/Screen%20Shot%202018-10-11%20at%2012.51.57%20AM.png)
+<pre><b>Hi ! Welcome to the Url analyser application</b></pre>
+![Screenshot](Screen%20Shot%202018-10-11%20at%2012.46.25%20AM.png)
+![alt text](https://github.com/loney7/demo/blob/master/Screen%20Shot%202018-10-11%20at%2012.51.57%20AM.png)
 
 
 
