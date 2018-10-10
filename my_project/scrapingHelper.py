@@ -62,13 +62,13 @@ def get_links_info(url, soup):
     links_info = [0, 0, 0]
     for a in soup.find_all('a'):
         link_parts = urlparse(a.get('href'))
-        #check internal link
+        # check internal link
         if base_parts.scheme == link_parts.scheme and base_parts.netloc == link_parts.netloc:
             links_info[0] = links_info[0]+1
-        #check external link
+        # check external link
         else:
             links_info[1] = links_info[1]+1
-        #check inaccesible link
+        # check inaccesible link
         if checkInaccessible(url):
             links_info[2] = links_info[2]+1
     return links_info
@@ -117,10 +117,11 @@ def getInfo(url):
             return result 
         soup = BeautifulSoup(response, "html.parser")
 
-        #html version of the page
+        # html version of the page
         html_version = get_html_version(soup.contents[0])
 
-        #page title
+        print(html_version)
+        # page title
         page_title = soup.title.text
 
         # status code 

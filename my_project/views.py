@@ -23,6 +23,7 @@ def analyse(request):
                 print('cache found')
             else:
                 resultObjInitial = scrapingHelper.getInfo(address)
+                print('gdfgeg')
             # #   resultString = str(resultObjInitial)
             #     res = {}
             #     res['address'] = "0"
@@ -62,7 +63,7 @@ def analyse(request):
 
 
 
-                cache.set(address, resultObjInitial, 60)
+               # cache.set(address, resultObjInitial, 60)
             #
             # resultObj = Webpage()
             # resultStringAttr = resultString.split("~")
@@ -88,6 +89,8 @@ def analyse(request):
                 "webpage":resultObjInitial
             }
             if resultObjInitial.errorType == 0:
+                # Setting up the cache for 24 hours
+                cache.set(address, resultObjInitial, 60*60*24)
                 return render(request, 'result.html', context)
             elif resultObjInitial.errorType == 1:
                 return render(request, 'resultHTTPError.html', context)
