@@ -85,10 +85,21 @@ The problem basically asks us:
 -  Redirect the user to the results page.
 
 
+#### Step 1 :
 
-Step 1 : Creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result
+Setup the machine to support django and python 3. Turns out, I got stuck in trivial issues with machine setup and it ended up consuming some time.
 
-Step 2 :
+
+#### Step 2 : 
+
+Creating  a model to store values in our database. This was followed by creating a super user and running migration scripts. This was followed by creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result.
+
+
+#### Step 3 :
+
+Creating the result view.
+ 
+
 
 
 
