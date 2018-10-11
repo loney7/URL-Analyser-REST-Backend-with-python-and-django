@@ -29,8 +29,10 @@
   
 
 ![alt text](https://github.com/loney7/demo/blob/master/Home%20Page%20View.png)
-<br>
-#### Image 1 : The home page of the Web Application
+<br> 
+  
+<b><div align="center">Image 1 : The home page of the Web Application</b>
+  
 
 <br>
 <br>
@@ -39,10 +41,19 @@
 
 ![alt text](https://github.com/loney7/demo/blob/master/Result%20View.png)
 <br>
-#### Image 2 :Results shown on submitting the URL
+<b>Image 2 :Results shown on submitting the URL</b>
 <br>
 <br>
 <br>
+
+![alt text](https://github.com/loney7/demo/blob/master/Error%20Page%20View.png)
+<br>
+<b>Image 3 : View when an error is thrown</b>
+<br>
+<br>
+<br>
+<div align="center">
+
 ## 1. Problem Statement 
   
   
