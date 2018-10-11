@@ -17,6 +17,9 @@
   
   <br>
   <br>
+  <br>
+  <br>
+  
   
   
   
@@ -27,9 +30,15 @@
 
 ![alt text](https://github.com/loney7/demo/blob/master/Home%20Page%20View.png)
 <br>
+#### The home page of the web application
+
+<br>
+<br>
 <br>
 <br>
 ![alt text](https://github.com/loney7/demo/blob/master/Result%20View.png)
+<br>
+#### Results shown on submitting the URL
 <br>
 <br>
 <br>
@@ -113,17 +122,22 @@ Setting up the cache.
 
 After the cache was setup, I moved towards writing the unit tests for my web application.
 
-
+<br>
+<br>
+<br>
+<br>
 
 
 
 ## Challenges/ Problems Faced/ Decisions
-
+<br>
+<br>
 
 ### 1.Technical Stack
 I had primarily worked on Java before. This was the first time, I was working with django and python3.
 As a result, it took me some extra time to grasp the fundamentals and get going.
-
+<br>
+<br>
 ### 2. Setting up cache for soup objects
 
 If you have nested tags with a depth of about 480 levels, and you want to convert this tag to string/unicode, you get the RuntimeError maximum recursion depth reached. Every level needs two nested method calls and soon you hit the default of 1000 nested python calls. 
@@ -142,7 +156,8 @@ After investing some time on the above issue, I figured out that the problem is 
 #### Approach 2
 On further investigation, I found out that the problem was with soup.title.string field. I also realized the importance of setting up an IDE and the debugger. Had I used a debugger earlier, I would have solved this issue very quickly. 
 I finally found a way to get the title string by using soup.title.text. After making this change the code started working perfectly.
-
+<br>
+<br>
 ### 3. Choice of Library for analysis of web pages
 
 I had to choose between two libraries beautiful soup and scrapy
@@ -167,18 +182,7 @@ Any kind of login form would define a password field. Using this, I was able to 
 
 
 
-
-
-
- 
-
-
-
-
-
-
-
-
+## 4. Requirements/ Machine Setup
 To run the web application, your system must fulfill the following requirements:
 
 * Django - 2.1.2
