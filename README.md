@@ -36,6 +36,7 @@
 <br>
 <br>
 <br>
+
 ![alt text](https://github.com/loney7/demo/blob/master/Result%20View.png)
 <br>
 #### Results shown on submitting the URL
