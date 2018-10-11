@@ -64,15 +64,15 @@
 
 * After processing the results should be returned to the user. The result comprises the following information:
 
-  ** What HTML version has the document?
+  - What HTML version has the document?
 
-  ** What is the page title?
+  - What is the page title?
 
-  ** How many headings of what level are in the document?
+  - How many headings of what level are in the document?
 
-  ** How many internal and external links are in the document? Are there any inaccessible links and how many?
+  - How many internal and external links are in the document? Are there any inaccessible links and how many?
 
-  ** Did the page contain a login-form?
+  - Did the page contain a login-form?
 
 In case the URL given by the user is not reachable an error message should be sent as a response. The message should contain the HTTP status-code and some useful error description.
 
@@ -228,9 +228,6 @@ Activate the virtualenv:
 
 <pre>$ source <desired-path>/bin/activate</pre>
 
-Deactivate the virtualenv:
-
-<pre>$ deactivate</pre>
 
 
 After you’ve created and activated a virtual environment, enter the command 
@@ -242,6 +239,16 @@ at the shell prompt/ terminal.
 Now, move to the directory where you want to store the project
 
 
-<pre> django-admin startproject webAnalyser</pre>
+<pre> django-admin startproject my_project</pre>
+
+```
+python manage.py runserver 
+
+```
+This will run the server on your local machine.
+
+
+
+
 
 
