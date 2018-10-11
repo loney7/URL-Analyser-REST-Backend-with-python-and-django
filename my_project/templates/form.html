@@ -2,96 +2,162 @@
 <head>
     <meta charset="UTF-8">
     <title>URL Analyser</title>
-    <style>
-
-.contact100-form {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding-bottom: 68px;
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<style>
+	body {
+  font-family: 'Lato', georgia;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  background: linear-gradient(to top, #b0b5d6ec, #6c7ae0eb);
+  text-align: center;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
 }
 
-.contact100-form-title {
-  display: block;
-  width: 100%;
-  font-family: Poppins-Bold;
-  font-size: 30px;
-  color: #333333;
-  line-height: 1.2;
+#form {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+label {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+textarea,
+input {
+  border: none;
+  outline: none;
+  border-radius: 0;
+  text-align: center;
+  background: none;
+  font-weight: 700;
+  font-family: 'Lato', georgia;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  max-width: 90%;
+  padding: 1rem;
+  border: 2px dashed rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  cursor: text;
+}
+
+textarea {
   text-align: left;
-  padding-bottom: 44px;
+  resize: none;
+  width: 90%;
+  border-color: rgba(255, 255, 255, 0)
 }
 
-.contact100-form-btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  min-width: 160px;
-  height: 35px;
-  background-color: #ff4b5a;
-  border-radius: 25px;
-
-  font-family: Poppins-Medium;
-  font-size: 16px;
-  color: #fff;
-  line-height: 1.2;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-
-  box-shadow: 0 10px 30px 0px rgba(255, 75, 90, 0.5);
-  -moz-box-shadow: 0 10px 30px 0px rgba(255, 75, 90, 0.5);
-  -webkit-box-shadow: 0 10px 30px 0px rgba(255, 75, 90, 0.5);
-  -o-box-shadow: 0 10px 30px 0px rgba(255, 75, 90, 0.5);
-  -ms-box-shadow: 0 10px 30px 0px rgba(255, 75, 90, 0.5);
+textarea:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px dashed rgba(255, 255, 255, 1);
 }
 
-.contact100-form-btn:hover {
-  background-color: #333333;
-  box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
-  -moz-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
-  -webkit-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
-  -o-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
-  -ms-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+textarea:focus:required:valid {
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.container-contact100-form-btn {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 25px;
+textarea:required:valid {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-    </style>
+input {
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+input:required,
+textarea:required {
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+  border-bottom: 2px dashed rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+input:required:valid {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+input:required:invalid {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  font-weight: 400;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.expanding {
+  vertical-align: top;
+}
+
+.send-icn {
+  fill: rgba(255, 255, 255, 1);
+  opacity: 0.5;
+}
+
+.send-icn:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 2vmax;
+}
+
+button:hover h4 {
+  text-decoration-color: black;
+  opacity: 1;
+}
+
+h4 {
+	color: white;
+	margin-top: 5px;
+ 	display: block;
+ 	opacity: 0.5;
+}
+
+</style>
 </head>
 <body>
-<div align="center">
-<form method="POST" action="" class="contact100-form">
-		<span class="contact100-form-title">URL Analyser</span>
-	
-			<div>{% csrf_token %}{{form}}</div>
-			<div class="container-contact100-form-btn">
-				<button class="contact100-form-btn" type="submit">
-					<span>Analyse this URL</span>
-				</button>
-			</div>
-</form>
+<div style="  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 1000px;
+  height: 500px;">
+	<h1>URL Analyser</h1><br><br><br>
+	<div style="border:1px solid white; border-radius: 10px;">
+		<form id="form" method= "POST">
+		  <!--<label for="url">Enter a URL</label>-->
+		  <!--<input type="url" name="url" id="url" placeholder="" required>-->
+			{% csrf_token %}{{form}}
+		  <button type="submit">
+				<svg class="send-icn" viewBox="0 0 30 30">
+					<path d="M17.791 7.442c-1.309-1.309-3.049-2.029-4.899-2.029s-3.591 0.72-4.899 2.029c-2.701 2.701-2.701 7.097 0 9.798 1.309 1.309 3.049 2.029 4.899 2.029s3.59-0.72 4.899-2.029c1.309-1.309 2.029-3.049 2.029-4.899s-0.72-3.59-2.029-4.899zM8.551 8c1.159-1.159 2.701-1.798 4.341-1.798s3.181 0.639 4.341 1.798c0.915 0.915 1.506 2.069 1.714 3.32l-2.151 2.103c-0.204-0.115-0.439-0.181-0.689-0.181-0.487 0-0.916 0.249-1.169 0.626l-3.161-0.992c0-0.009 0.001-0.018 0.001-0.028 0-0.775-0.631-1.406-1.406-1.406s-1.406 0.631-1.406 1.406c0 0.253 0.068 0.491 0.186 0.697l-1.658 1.719c-1.258-2.327-0.906-5.301 1.058-7.265zM16.725 14.648c0 0.34-0.277 0.617-0.617 0.617s-0.617-0.277-0.617-0.617c0-0.34 0.277-0.617 0.617-0.617s0.617 0.277 0.617 0.617zM10.989 12.849c0 0.34-0.277 0.617-0.617 0.617s-0.617-0.277-0.617-0.617 0.277-0.617 0.617-0.617c0.34 0 0.617 0.277 0.617 0.617zM17.233 16.682c-1.159 1.159-2.701 1.798-4.341 1.798s-3.182-0.639-4.341-1.798c-0.23-0.23-0.438-0.475-0.625-0.731l1.793-1.858c0.195 0.103 0.417 0.162 0.653 0.162 0.487 0 0.916-0.249 1.169-0.626l3.161 0.992c-0 0.009-0.001 0.018-0.001 0.028 0 0.775 0.631 1.406 1.406 1.406s1.406-0.631 1.406-1.406c0-0.239-0.060-0.464-0.166-0.661l1.684-1.646c-0 1.64-0.639 3.181-1.798 4.341z"></path>
+					<path d="M22.775 18.68l-0.573 0.573-1.421-1.519c1.682-2.459 2.087-5.535 1.215-8.291l1.128-1.103c0.198 0.107 0.425 0.168 0.666 0.168 0.775 0 1.406-0.631 1.406-1.406 0-0.23-0.056-0.446-0.154-0.638l2.421-2.367v1.224h0.789v-2.556h-2.556v0.789h1.193l-2.389 2.336c-0.209-0.123-0.452-0.194-0.711-0.194-0.775 0-1.406 0.631-1.406 1.406 0 0.248 0.065 0.481 0.178 0.684l-0.864 0.845c-0.465-1.108-1.147-2.145-2.048-3.046-3.726-3.726-9.788-3.726-13.514 0-3.319 3.319-3.681 8.492-1.087 12.215l-0.664 0.689c-0.195-0.103-0.417-0.162-0.653-0.162-0.775-0-1.406 0.631-1.406 1.406s0.631 1.406 1.406 1.406 1.406-0.631 1.406-1.406c0-0.254-0.068-0.491-0.186-0.697l0.58-0.601c0.19 0.228 0.39 0.45 0.603 0.663 1.863 1.863 4.31 2.794 6.757 2.794 1.879 0 3.757-0.55 5.371-1.647l1.425 1.523-0.592 0.592 6.9 6.876 3.681-3.681-6.9-6.876zM23.79 6.485c0.34 0 0.617 0.277 0.617 0.617s-0.277 0.617-0.617 0.617c-0.34 0-0.617-0.277-0.617-0.617s0.277-0.617 0.617-0.617zM3.731 20.351c-0.34 0-0.617-0.277-0.617-0.617s0.277-0.617 0.617-0.617c0.34 0 0.617 0.277 0.617 0.617s-0.277 0.617-0.617 0.617zM6.693 18.54c-3.418-3.418-3.418-8.979 0-12.398 1.709-1.709 3.954-2.564 6.199-2.564s4.49 0.855 6.199 2.564c3.418 3.418 3.418 8.979 0 12.398s-8.98 3.418-12.398 0zM18.901 19.772c0.258-0.209 0.508-0.433 0.748-0.674 0.232-0.232 0.45-0.473 0.653-0.722l1.342 1.435-1.399 1.399-1.345-1.438zM25.993 28.121l-5.782-5.762 2.564-2.564 5.782 5.762-2.564 2.564z"></path>
+				</svg>
+		      <h4>Analyse</h4>
+		   </button>
+		</form>
+	</div>
 </div>
 </body>
 </html>
