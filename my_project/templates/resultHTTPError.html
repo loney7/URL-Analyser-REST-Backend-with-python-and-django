@@ -1,13 +1,40 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <style>
+  body {
+  font-family: 'Lato', georgia;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  background: linear-gradient(to top, #b0b5d6ec, #6c7ae0eb);
+  text-align: center;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+</style>
 </head>
 <body>
-    HTTP Error!<br>
-	Address = {{webpage.address}}<br>
-    Status Code = {{webpage.statusCode}}<br>
-    Error = {{webpage.errorMessage}}
+<div style="  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 800px;
+  height: 500px;">
+
+    <h2>HTTP Error!</h2><br>
+  <h3>Address = {{webpage.address}}</h3><br>
+    <h3>Status Code = {{webpage.statusCode}}</h3><br>
+    <h3>Error = {{webpage.errorMessage}}</h3>
+
+</div>
 </body>
 </html>
+
+

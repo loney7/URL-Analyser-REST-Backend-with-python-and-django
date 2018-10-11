@@ -1,18 +1,28 @@
+import django
 import unittest
 from django.test import Client
 
-class SimpleTest(unittest.TestCase):
-    def setUp(self):
+django.setup()
 
-        # Every test needs a client.
-        self.client = Client()
 
-    def test_details(self):
-        # Issue a GET request.
+class MainTest(unittest.TestCase):
+    client = Client()
+
+    # Test for a valid link
+
+    def test_valid_link(self):
         response = self.client.get('/index/analyse/')
-
-        # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 200)
+
+    # Test for an invalid link : 404 (Not Found)
+
+    def test_invalid_link(self):
+        response = self.client.get('/index/analyse/daf')
+        self.assertEqual(response.status_code, 404)
+
+
+
+
 
 
 

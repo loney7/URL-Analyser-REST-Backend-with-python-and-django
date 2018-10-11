@@ -6,14 +6,6 @@ from django.core.cache import cache
 
 
 def home(request):
-    return HttpResponse('WELCOME TO THE URL Analyser App')
-
-
-def index(request):
-    return render(request, 'form.html')
-
-
-def analyse(request):
     if request.method == "POST":
         address = request.POST.get('address')
         form = Form(request.POST)
