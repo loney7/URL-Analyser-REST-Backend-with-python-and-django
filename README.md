@@ -101,7 +101,7 @@ Creating the result view.
 
 
 
-## Challenges/ Problems Faced
+## Challenges/ Problems Faced/ Decisions
 
 
 ### 1.Technical Stack
@@ -129,6 +129,18 @@ I finally found a way to get the title string by using soup.title.text. After ma
 
 ### 3. Choice of Library for analysis of web pages
 
+I had to choose between two libraries beautiful soup and scrapy
+Factors I considered :
+
+* Learning Curve
+BeautifulSoup is very easy to learn, you can quickly use it to extract the data you want, in most cases, you will also need a downloader to help you get the HTML source. Since Scrapy does no only deal with content extraction but also many other tasks such as downloading HTML, learning curve of Scrapy is much steeper.
+
+* Extensibility
+So if the project is small, beautiful soup is preferred. If your project needs more customization such as proxy, data pipeline, then Scrapy becomes an obvious choice.
+
+As a result I decided to use Beautiful Soup for analysing web pages.
+
+
  
 
 
@@ -140,19 +152,11 @@ I finally found a way to get the title string by using soup.title.text. After ma
 
 To run the web application, your system must fulfill the following requirements:
 
-Django - 2.1.2
-
-
-urllib3 - 1.23
-
-
-beautifulsoup4 - 4.6.3
-
-
-Python 3
-
-
-Pip 3
+* Django - 2.1.2
+* urllib3 - 1.23
+* beautifulsoup4 - 4.6.3
+* Python 3
+* Pip 3
 
 
 Steps for setting up a virtual environment on your mac to run this code:
