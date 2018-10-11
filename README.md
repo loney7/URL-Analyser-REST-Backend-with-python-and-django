@@ -98,6 +98,37 @@ Creating  a model to store values in our database. This was followed by creating
 #### Step 3 :
 
 Creating the result view.
+
+
+
+## Challenges/ Problems Faced
+
+
+### 1.Technical Stack
+I had primarily worked on Java before. This was the first time, I was working with django and python3.
+As a result, it took me some extra time to grasp the fundamentals and get going.
+
+### 2. Setting up cache for soup objects
+
+If you have nested tags with a depth of about 480 levels, and you want to convert this tag to string/unicode, you get the RuntimeError maximum recursion depth reached. Every level needs two nested method calls and soon you hit the default of 1000 nested python calls. 
+
+As a result, it is not possibe to cache soup objects directly.
+
+I was using a field
+
+soup.title.string : to display the Title of a web page.
+
+I somehow ended up assuming that this field must be a string. However soup.title.string does not return a python string. As a result for some pages, my cache wasn't working.
+
+#### Approach 1
+After investing some time on the above issue, I figured out that the problem is due to the usage of soup objects. I thought of converting the result object to a string. This was definitely a hack around the problem i was facing. However, for serializing and deserializing, I ended up adding a lot of unnecessary code. Seeing my code get messy , I decided to drop this approach and further investigate the problem.
+
+#### Approach 2
+On further investigation, I found out that the problem was with soup.title.string field. I also realized the importance of setting up an IDE and the debugger. Had I used a debugger earlier, I would have solved this issue very quickly. 
+I finally found a way to get the title string by using soup.title.text. After making this change the code started working perfectly.
+
+### 3. Choice of Library for analysis of web pages
+
  
 
 
