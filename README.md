@@ -49,7 +49,7 @@
 
   ** How many internal and external links are in the document? Are there any inaccessible links and how many?
 
-  ** Did the page contain a login-form?
+** Did the page contain a login-form?
 
 In case the URL given by the user is not reachable an error message should be sent as a response. The message should contain the HTTP status-code and some useful error description.
 
@@ -60,6 +60,45 @@ The backend should cache the scraping results for each URL for 24 hours such tha
 <br>
 <br>
 <br>
+
+
+## 2. Steps towards building the solution
+
+
+### Baby Steps
+
+I had no prior experience of working with Django, so my first step was 
+to quickly skim through some video tutorials on Django. This was followed by
+going through the Django documentation thouroughly and implementing the steps.
+
+
+### Problem Analysis
+
+The problem basically asks us:
+
+- Take input from the user
+- If the url is present in the cache :
+      *return the results by directing the user to a new page.
+-else 
+      *Hit the url and do the required analysis.
+      
+-  Redirect the user to the results page.
+
+
+#### Step 1 :
+
+Setup the machine to support django and python 3. Turns out, I got stuck in trivial issues with machine setup and it ended up consuming some time.
+
+
+#### Step 2 : 
+
+Creating  a model to store values in our database. This was followed by creating a super user and running migration scripts. This was followed by creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result.
+
+
+#### Step 3 :
+
+Creating the result view.
+
 
 
 ## Challenges/ Problems Faced/ Decisions
@@ -108,50 +147,7 @@ This was due to SSL certificate errors. I ended up adding some code to ignore to
 
 ### 5. Detecting login forms
 
-Any kind of login form would define a password field. So i ended up using that as a check to detect any kind of login forms.
-
-
-
-
-
-
-## 3. Steps towards building the solution
-
-
-### Baby Steps
-
-I had no prior experience of working with Django, so my first step was 
-to quickly skim through some video tutorials on Django. This was followed by
-going through the Django documentation thouroughly and implementing the steps.
-
-
-### Problem Analysis
-
-The problem basically asks us:
-
-- Take input from the user
-- If the url is present in the cache :
-      * return the results by directing the user to a new page.
--else 
-      * Hit the url and do the required analysis.
-      
--  Redirect the user to the results page.
-
-
-#### Step 1 :
-
-Setup the machine to support django and python 3. Turns out, I got stuck in trivial issues with machine setup and it ended up consuming some time.
-
-
-#### Step 2 : 
-
-Creating  a model to store values in our database. This was followed by creating a super user and running migration scripts. This was followed by creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result.
-
-
-#### Step 3 :
-
-Creating the result view.
-
+Any kind of login form would defin
 
 
 
@@ -215,6 +211,5 @@ Now, move to the directory where you want to store the project
 
 
 <pre> django-admin startproject webAnalyser</pre>
-
 
 
