@@ -8,16 +8,18 @@
   
   <li>2. Steps towards building the solution</li>
   
-  <li>3. Assumptions/ Decisions</li>
+  <li>3. Problems/Challenges Faced/ Decisions</li>
   
-  <li>4. Problems/Challenges Faced</li>
+  <li>4. Requirements/ Machine Setup</li>
   
-  <li>5. Requirements/ Machine Setup</li>
   
   </ul>
   
   <br>
   <br>
+  <br>
+  <br>
+  
   
   
   
@@ -26,8 +28,18 @@
   
   
 
-![Screenshot](Screen%20Shot%202018-10-11%20at%2012.46.25%20AM.png)
-![alt text](https://github.com/loney7/demo/blob/master/Screen%20Shot%202018-10-11%20at%2012.51.57%20AM.png)
+![alt text](https://github.com/loney7/demo/blob/master/Home%20Page%20View.png)
+<br>
+#### Image 1 : The home page of the Web Application
+
+<br>
+<br>
+<br>
+<br>
+
+![alt text](https://github.com/loney7/demo/blob/master/Result%20View.png)
+<br>
+#### Image 2 :Results shown on submitting the URL
 <br>
 <br>
 <br>
@@ -49,7 +61,7 @@
 
   ** How many internal and external links are in the document? Are there any inaccessible links and how many?
 
-** Did the page contain a login-form?
+  ** Did the page contain a login-form?
 
 In case the URL given by the user is not reachable an error message should be sent as a response. The message should contain the HTTP status-code and some useful error description.
 
@@ -78,9 +90,9 @@ The problem basically asks us:
 
 - Take input from the user
 - If the url is present in the cache :
-      *return the results by directing the user to a new page.
--else 
-      *Hit the url and do the required analysis.
+ return the results by directing the user to a new page.
+- else: 
+ Hit the url and do the required analysis.
       
 -  Redirect the user to the results page.
 
@@ -92,23 +104,42 @@ Setup the machine to support django and python 3. Turns out, I got stuck in triv
 
 #### Step 2 : 
 
-Creating  a model to store values in our database. This was followed by creating a super user and running migration scripts. This was followed by creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result.
+Creating  a model and adding the respective fields. This was followed by creating a super user and running migration scripts. This was followed by creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result.
 
 
 #### Step 3 :
 
-Creating the result view.
+Creating the result view. 
+
+#### Step 4 : 
+
+This involved writing the helper function to perform all the analysis on the web page. I wrote separate functions for each of the fields that needed to be determined.
+
+#### Step 5 : 
+
+Setting up the cache. 
+
+#### Step 6:
+
+After the cache was setup, I moved towards writing the unit tests for my web application.
+
+<br>
+<br>
+<br>
+<br>
 
 
 
-## Challenges/ Problems Faced/ Decisions
+## 2. Challenges/ Problems Faced/ Decisions
+<br>
+<br>
 
-
-### 1.Technical Stack
+### a.Technical Stack
 I had primarily worked on Java before. This was the first time, I was working with django and python3.
 As a result, it took me some extra time to grasp the fundamentals and get going.
-
-### 2. Setting up cache for soup objects
+<br>
+<br>
+### b. Setting up cache for soup objects
 
 If you have nested tags with a depth of about 480 levels, and you want to convert this tag to string/unicode, you get the RuntimeError maximum recursion depth reached. Every level needs two nested method calls and soon you hit the default of 1000 nested python calls. 
 
@@ -126,8 +157,9 @@ After investing some time on the above issue, I figured out that the problem is 
 #### Approach 2
 On further investigation, I found out that the problem was with soup.title.string field. I also realized the importance of setting up an IDE and the debugger. Had I used a debugger earlier, I would have solved this issue very quickly. 
 I finally found a way to get the title string by using soup.title.text. After making this change the code started working perfectly.
-
-### 3. Choice of Library for analysis of web pages
+<br>
+<br>
+### c. Choice of Library for analysis of web pages
 
 I had to choose between two libraries beautiful soup and scrapy
 Factors I considered :
@@ -140,29 +172,18 @@ So if the project is small, beautiful soup is preferred. If your project needs m
 
 As a result I decided to use Beautiful Soup for analysing web pages.
 
-### 4. Opening https sites
+### d. Opening https sites
 
 During testing I realized that my code did not work for https connections. 
 This was due to SSL certificate errors. I ended up adding some code to ignore to ignore SSL certificate errors and the system started working fine.
 
-### 5. Detecting login forms
+### e. Detecting login forms
 
-Any kind of login form would defin
-
-
+Any kind of login form would define a password field. Using this, I was able to detect all the login forms in a website.
 
 
 
-
- 
-
-
-
-
-
-
-
-
+## 4. Requirements/ Machine Setup
 To run the web application, your system must fulfill the following requirements:
 
 * Django - 2.1.2
