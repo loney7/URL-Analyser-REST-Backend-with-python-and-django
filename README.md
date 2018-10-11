@@ -52,7 +52,7 @@
 <br>
 <br>
 <br>
-<div align="center">
+</div>
 
 ## 1. Problem Statement 
   
