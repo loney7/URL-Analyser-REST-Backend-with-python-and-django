@@ -8,11 +8,10 @@
   
   <li>2. Steps towards building the solution</li>
   
-  <li>3. Assumptions/ Decisions</li>
+  <li>3. Problems/Challenges Faced/ Decisions</li>
   
-  <li>4. Problems/Challenges Faced</li>
+  <li>4. Requirements/ Machine Setup</li>
   
-  <li>5. Requirements/ Machine Setup</li>
   
   </ul>
   
@@ -26,8 +25,11 @@
   
   
 
-![Screenshot](Screen%20Shot%202018-10-11%20at%2012.46.25%20AM.png)
-![alt text](https://github.com/loney7/demo/blob/master/Screen%20Shot%202018-10-11%20at%2012.51.57%20AM.png)
+![alt text](https://github.com/loney7/demo/blob/master/Home%20Page%20View.png)
+<br>
+<br>
+<br>
+![alt text](https://github.com/loney7/demo/blob/master/Result%20View.png)
 <br>
 <br>
 <br>
@@ -49,7 +51,7 @@
 
   ** How many internal and external links are in the document? Are there any inaccessible links and how many?
 
-** Did the page contain a login-form?
+  ** Did the page contain a login-form?
 
 In case the URL given by the user is not reachable an error message should be sent as a response. The message should contain the HTTP status-code and some useful error description.
 
@@ -78,9 +80,9 @@ The problem basically asks us:
 
 - Take input from the user
 - If the url is present in the cache :
-      *return the results by directing the user to a new page.
--else 
-      *Hit the url and do the required analysis.
+ return the results by directing the user to a new page.
+- else: 
+ Hit the url and do the required analysis.
       
 -  Redirect the user to the results page.
 
@@ -92,12 +94,26 @@ Setup the machine to support django and python 3. Turns out, I got stuck in triv
 
 #### Step 2 : 
 
-Creating  a model to store values in our database. This was followed by creating a super user and running migration scripts. This was followed by creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result.
+Creating  a model and adding the respective fields. This was followed by creating a super user and running migration scripts. This was followed by creating a form to get user input. This was fairly easy. I found it easy to navigate through the documentation and get the desired result.
 
 
 #### Step 3 :
 
-Creating the result view.
+Creating the result view. 
+
+#### Step 4 : 
+
+This involved writing the helper function to perform all the analysis on the web page. I wrote separate functions for each of the fields that needed to be determined.
+
+#### Step 5 : 
+
+Setting up the cache. 
+
+#### Step 6:
+
+After the cache was setup, I moved towards writing the unit tests for my web application.
+
+
 
 
 
@@ -147,7 +163,7 @@ This was due to SSL certificate errors. I ended up adding some code to ignore to
 
 ### 5. Detecting login forms
 
-Any kind of login form would defin
+Any kind of login form would define a password field. Using this, I was able to detect all the login forms in a website.
 
 
 
