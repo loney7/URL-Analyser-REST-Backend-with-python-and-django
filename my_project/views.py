@@ -6,7 +6,7 @@ from django.core.cache import cache
 
 
 def home(request):
-    return HttpResponse('WELCOME TO THE URL Analyser App. Kindly redirect yourself to localhost/index/analysis')
+    return HttpResponse('WELCOME TO THE URL Analyser App')
 
 
 def index(request):
@@ -22,7 +22,7 @@ def analyse(request):
                 result_object = cache.get(address)
                 print('cache found')
             else:
-                result_object = scrapingHelper.getInfo(address)
+                result_object = scrapingHelper.get_info(address)
             context = {
                 "webpage":result_object
             }

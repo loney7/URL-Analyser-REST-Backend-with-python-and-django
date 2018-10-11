@@ -59,58 +59,74 @@ def get_forms_info(soup):
     else:
         return False
 
+# This function helps us identify internal links, external links and inaccessible links
+
+
 def get_links_info(url, soup):
     base_parts = urlparse(url)
     links_info = [0, 0, 0]
     for a in soup.find_all('a'):
         link_parts = urlparse(a.get('href'))
         # check internal link
+        # Basically, any internal links will have the same base root url
         if base_parts.scheme == link_parts.scheme and base_parts.netloc == link_parts.netloc:
             links_info[0] = links_info[0]+1
         # check external link
         else:
             links_info[1] = links_info[1]+1
-        # check inaccesible link
-        if checkInaccessible(url):
+        # check inaccessible link
+        if check_inaccessible(url):
             links_info[2] = links_info[2]+1
     return links_info
 
+# this function checks for any inaccessible url in the web page
 
-def checkInaccessible(url):
+
+def check_inaccessible(url):
     try:
+        # we must validate any kind of url's that beautiful soup returns us
         validate = URLValidator()
         validate(url)
         try:
+            # logic to ignore any kind of SSL certificate errors
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
             response = urlopen(url, context=ctx)
-        except HTTPError as e:
+        except HTTPError:
             return True 
-        except URLError as e:
+        except URLError:
             return True 
     except ValidationError:
         return True
-    return False 
+    return False
 
 
-def getInfo(url):
+# This function returns us an object with all fields for the analysis of web page populated
+
+
+
+def get_info(url):
 
     try:
+        # validating the url at the backend too.
         validate = URLValidator()
         validate(url)
         try:
+            #   Logic to ignore SSL certificate errors
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
             response = urlopen(url, context=ctx)
+            # Error handling if the web page does not open
         except HTTPError as e:
             result = Webpage()
             result.address = url
             result.errorType = 1
             result.statusCode = e.code
             result.errorMessage = e
-            return result 
+            return result
+            # Url error can be different from  a HTTP error ( Example: Connection Refused)
         except URLError as e:
             result = Webpage()
             result.address = url
@@ -118,49 +134,45 @@ def getInfo(url):
             result.errorMessage = e.args[0]
             return result 
         soup = BeautifulSoup(response, "html.parser")
-
         # html version of the page
         html_version = get_html_version(soup.contents[0])
-
-        print(html_version)
         # page title
         page_title = soup.title.text
-
         # status code 
         status_code = response.getcode()
-
         # time_stamp
         time_stamp = ""
-
         headings = get_heading_info(soup)
-
         login_forms = get_forms_info(soup)
-
         link_counts = get_links_info(url, soup)
-
-        result = Webpage()
-        result.address = url
-        result.statusCode = status_code
-        result.version = html_version
-        result.title = page_title
-        result.timeStamp = time_stamp
-        result.internalLinkCount = link_counts[0]
-        result.externalLinkCount = link_counts[1]
-        result.inaccessibleLinkCount = link_counts[2]
-        result.loginForm = login_forms
-        result.h1Count = headings['h1']
-        result.h2Count = headings['h2']
-        result.h3Count = headings['h3']
-        result.h4Count = headings['h4']
-        result.h5Count = headings['h5']
-        result.h6Count = headings['h6']
-        result.errorType = 0
-        result.errorMessage = "Success"
-        print(result)
-        return result
-
+        return set_result_object(html_version, url, page_title, status_code, headings, login_forms, link_counts,
+                                 time_stamp)
     except ValidationError:
         result = Webpage()
         result.errorType = 3
         result.errorMessage = "URL not valid."
-        return result 
+        return result
+
+
+# This function sets the values for our result object
+def set_result_object(html_version, url, page_title, status_code, headings, login_forms, link_counts, time_stamp):
+    result = Webpage()
+    result.address = url
+    result.statusCode = status_code
+    result.version = html_version
+    result.title = page_title
+    result.timeStamp = time_stamp
+    result.internalLinkCount = link_counts[0]
+    result.externalLinkCount = link_counts[1]
+    result.inaccessibleLinkCount = link_counts[2]
+    result.loginForm = login_forms
+    result.h1Count = headings['h1']
+    result.h2Count = headings['h2']
+    result.h3Count = headings['h3']
+    result.h4Count = headings['h4']
+    result.h5Count = headings['h5']
+    result.h6Count = headings['h6']
+    result.errorType = 0
+    result.errorMessage = "Success"
+    return result
+
