@@ -143,7 +143,12 @@ As a result I decided to use Beautiful Soup for analysing web pages.
 ### 4. Opening https sites
 
 During testing I realized that my code did not work for https connections. 
-This was due to SSL certificate errors. I ended up adding some code to ignore to ignore SSL certificate errors and the system started working fine
+This was due to SSL certificate errors. I ended up adding some code to ignore to ignore SSL certificate errors and the system started working fine.
+
+### 5. Detecting login forms
+
+Any kind of login form would defin
+
 
 
 
