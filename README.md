@@ -30,7 +30,7 @@
 
 ![alt text](https://github.com/loney7/demo/blob/master/Home%20Page%20View.png)
 <br>
-#### The home page of the web application
+#### Image 1 : The home page of the Web Application
 
 <br>
 <br>
@@ -39,7 +39,7 @@
 
 ![alt text](https://github.com/loney7/demo/blob/master/Result%20View.png)
 <br>
-#### Results shown on submitting the URL
+#### Image 2 :Results shown on submitting the URL
 <br>
 <br>
 <br>
@@ -130,16 +130,16 @@ After the cache was setup, I moved towards writing the unit tests for my web app
 
 
 
-## Challenges/ Problems Faced/ Decisions
+## 2. Challenges/ Problems Faced/ Decisions
 <br>
 <br>
 
-### 1.Technical Stack
+### a.Technical Stack
 I had primarily worked on Java before. This was the first time, I was working with django and python3.
 As a result, it took me some extra time to grasp the fundamentals and get going.
 <br>
 <br>
-### 2. Setting up cache for soup objects
+### b. Setting up cache for soup objects
 
 If you have nested tags with a depth of about 480 levels, and you want to convert this tag to string/unicode, you get the RuntimeError maximum recursion depth reached. Every level needs two nested method calls and soon you hit the default of 1000 nested python calls. 
 
@@ -159,7 +159,7 @@ On further investigation, I found out that the problem was with soup.title.strin
 I finally found a way to get the title string by using soup.title.text. After making this change the code started working perfectly.
 <br>
 <br>
-### 3. Choice of Library for analysis of web pages
+### c. Choice of Library for analysis of web pages
 
 I had to choose between two libraries beautiful soup and scrapy
 Factors I considered :
@@ -172,12 +172,12 @@ So if the project is small, beautiful soup is preferred. If your project needs m
 
 As a result I decided to use Beautiful Soup for analysing web pages.
 
-### 4. Opening https sites
+### d. Opening https sites
 
 During testing I realized that my code did not work for https connections. 
 This was due to SSL certificate errors. I ended up adding some code to ignore to ignore SSL certificate errors and the system started working fine.
 
-### 5. Detecting login forms
+### e. Detecting login forms
 
 Any kind of login form would define a password field. Using this, I was able to detect all the login forms in a website.
 
