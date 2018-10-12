@@ -192,6 +192,9 @@ This was due to SSL certificate errors. I ended up adding some code to ignore to
 
 Any kind of login form would define a password field. Using this, I was able to detect all the login forms in a website.
 
+#### f. Detecting inaccessible links
+
+This means that we need to acces all the links present in the website. This  is an expensive operation for the web application. If the website has a lot of links, the web application becomes very slow. So, the performance of the application is affected when a website with high number of links is analysed. This performance has been enhanced by making the use of caching.
 
 
 ## 4. Requirements/ Machine Setup
