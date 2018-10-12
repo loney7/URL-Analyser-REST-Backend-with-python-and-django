@@ -198,58 +198,74 @@ This means that we need to acces all the links present in the website. This  is 
 
 
 ## 4. Requirements/ Machine Setup
+## 4. Requirements/ Machine Setup
 To run the web application, your system must fulfill the following requirements:
 
-* Django - 2.1.2
-* urllib3 - 1.23
-* beautifulsoup4 - 4.6.3
-* Python 3
-* Pip 3
-
-
-Steps for setting up a virtual environment on your mac to run this code:
-
-$ brew install python3
-
-
-Pip3 is installed with Python3
-
-Installation
-
-
-To install virtualenv via pip run:
-
-<pre> $ pip3 install virtualenv</pre>
-
-<b>Usage</b>
-
-
-Creation of virtualenv:
-
-<pre>$ virtualenv -p python3 <desired-path></pre>
-Activate the virtualenv:
-
-<pre>$ source <desired-path>/bin/activate</pre>
+* Python 3  <pre> $ brew install python3 </pre>
+* Pip 3  <pre> Pip3 is automatically installed with Python3 </pre>
+* beautifulsoup4 - 4.6.3  <pre> pip install beautifulsoup4==4.6.3 </pre>
+* urllib3 - 1.23  <pre> $ pip install urllib3 </pre>
 
 
 
-After you’ve created and activated a virtual environment, enter the command 
+Steps for setting up a virtual environment to run this code:
 
-<pre>pip install Django</pre>
+1. Installation
 
-at the shell prompt/ terminal.
+    To install virtualenv via pip run:
 
-Now, move to the directory where you want to store the project
+      <pre> $ pip3 install virtualenv</pre>
 
 
-<pre> django-admin startproject my_project</pre>
+2. Creation of virtualenv:
 
-```
-python manage.py runserver 
+    A. Create a directory for virtual environment 
+      <pre> $ mkdir HelloWorld </pre>
+    B. Connect virtual environment to directory 
+      <pre> $ virtualenv -p python3 HelloWorld </pre>
+    C. Move to the deirectory 
+      <pre> $ cd HelloWorld </pre>
+    D. Activate the virtualenv: 
+      <pre>$ source bin/activate </pre>
 
-```
-This will run the server on your local machine.
 
+3. Install django framework
+  After you’ve created and activated a virtual environment, enter the command 
+    <pre> $ pip3 install Django </pre>
+  at the shell prompt/terminal.
+
+
+
+
+
+
+
+<b>Running the project:</b>
+1. Checkout the project: https://github.com/loney7/demo.git
+
+2. Move to the project directory <pre> $ cd ~/Downloads/demo-master </pre>
+
+3. Start django
+  <pre> $ django-admin startproject my_project_0 </pre>
+
+4. Start the server
+  
+  $ python3 manage.py runserver 
+
+  
+  This will run the server on your local machine.
+
+5. visit http://127.0.0.1:8000/ on your web browser to analyse the Urls.
+
+Cheers!!!
+
+Starting development server at http://127.0.0.1:8000/
+Started development server at http://127.0.0.1:8000/
+.
+.
+.
+
+Stop the server with: control+c
 
 
 
